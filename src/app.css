@@ -1,3 +1,10 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@source "node_modules/flowbite/**/*.js";
+@source "node_modules/flowbite/**/*.ts";
+
 body {
   font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
