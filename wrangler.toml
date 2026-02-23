@@ -1,1 +1,7 @@
+name = "experooment"
+main = ".output/server/index.mjs"
+compatibility_date = "2026-02-23"
 compatibility_flags = [ "nodejs_compat" ]
+
+[assets]
+directory = ".output/public"
