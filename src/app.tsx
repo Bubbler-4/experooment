@@ -24,6 +24,18 @@ export default function App() {
                       About
                     </a>
                   </li>
+                  <li>
+                    <a href="/tiny" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                      Tiny
+                    </a>
+                    <ul class="ml-4 mt-1 space-y-1">
+                      <li>
+                        <a href="/tiny/how-to-play" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 text-sm">
+                          How to play
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </aside>
