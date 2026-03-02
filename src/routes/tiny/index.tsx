@@ -101,9 +101,11 @@ function createBlockQueue(): number[] {
 }
 
 export default function Tiny() {
+  let wrapperRef: HTMLDivElement | undefined;
   let containerRef: HTMLDivElement | undefined;
   let stage: Konva.Stage | undefined;
   let layer: Konva.Layer | undefined;
+  let stageScale = 1;
 
   let grid = createEmptyGrid();
   let queue = createBlockQueue();
@@ -323,6 +325,20 @@ export default function Tiny() {
     draw();
   };
 
+  const resizeStage = () => {
+    if (!stage || !wrapperRef) {
+      return;
+    }
+
+    const availableWidth = Math.max(wrapperRef.clientWidth - 8, 1);
+    stageScale = Math.min(1, availableWidth / STAGE_WIDTH);
+
+    stage.width(STAGE_WIDTH * stageScale);
+    stage.height(STAGE_HEIGHT * stageScale);
+    stage.scale({ x: stageScale, y: stageScale });
+    stage.batchDraw();
+  };
+
   onMount(() => {
     if (!containerRef) {
       return;
@@ -337,7 +353,7 @@ export default function Tiny() {
     layer = new Konva.Layer();
     stage.add(layer);
 
-    stage.on("click", () => {
+    stage.on("click tap", () => {
       if (!stage) {
         return;
       }
@@ -347,7 +363,8 @@ export default function Tiny() {
         return;
       }
 
-      const { x, y } = pointerPosition;
+      const x = pointerPosition.x / stageScale;
+      const y = pointerPosition.y / stageScale;
       const insideGridX = x >= GRID_X && x < GRID_X + GRID_SIZE * CELL_SIZE;
       const insideGridY = y >= GRID_Y && y < GRID_Y + GRID_SIZE * CELL_SIZE;
 
@@ -360,9 +377,12 @@ export default function Tiny() {
     });
 
     draw();
+    resizeStage();
+    window.addEventListener("resize", resizeStage);
   });
 
   onCleanup(() => {
+    window.removeEventListener("resize", resizeStage);
     stage?.destroy();
     stage = undefined;
     layer = undefined;
@@ -374,8 +394,10 @@ export default function Tiny() {
       <h1 class="mb-4 text-4xl font-semibold tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         Tiny
       </h1>
-      <div class="inline-flex flex-col gap-3">
-        <div ref={containerRef} class="rounded border border-gray-300 bg-white p-2" />
+      <div class="flex w-full max-w-full flex-col gap-3">
+        <div ref={wrapperRef} class="w-full overflow-x-auto rounded border border-gray-300 bg-white p-1">
+          <div ref={containerRef} class="touch-manipulation" />
+        </div>
         <button
           type="button"
           class="w-fit rounded bg-black px-4 py-2 text-sm font-medium text-white hover:bg-gray-800"
