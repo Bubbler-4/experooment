@@ -13,24 +13,24 @@ export default function App() {
           <div class="flex h-screen">
             <aside class="w-64 h-full bg-gray-50 border-r border-gray-200">
               <div class="h-full px-3 py-4 overflow-y-auto">
-                <ul class="space-y-2">
+                <ul class="space-y-2 font-medium">
                   <li>
-                    <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900">
                       Index
                     </a>
                   </li>
                   <li>
-                    <a href="/about" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="/about" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900">
                       About
                     </a>
                   </li>
                   <li>
-                    <a href="/tiny" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="/tiny" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 hover:text-gray-900">
                       Tiny
                     </a>
                     <ul class="ml-4 mt-1 space-y-1">
                       <li>
-                        <a href="/tiny/how-to-play" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 text-sm">
+                        <a href="/tiny/how-to-play" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 hover:text-gray-900 text-sm font-normal">
                           How to play
                         </a>
                       </li>
