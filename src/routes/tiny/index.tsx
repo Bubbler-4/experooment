@@ -27,9 +27,7 @@ const STAGE_HEIGHT = GRID_Y + GRID_SIZE * CELL_SIZE + 20;
 const BLOCKS: readonly BlockShape[] = [
   // 1
   withBounds([
-    [0, 1],
-    [1, 0],
-    [1, 2],
+    [0, 0],
   ]),
   // 2
   withBounds([
@@ -55,30 +53,30 @@ const BLOCKS: readonly BlockShape[] = [
   ]),
   // 6
   withBounds([
-    [0, 1],
+    [0, 0],
     [1, 0],
     [1, 1],
   ]),
   // 7
   withBounds([
-    [0, 0],
+    [0, 1],
     [1, 0],
     [1, 1],
   ]),
   // 8
   withBounds([
     [0, 0],
+    [1, 0],
+    [1, 1],
+    [2, 0],
+    [2, 1],
+  ]),
+  // 9
+  withBounds([
     [0, 1],
     [1, 0],
     [1, 1],
     [2, 0],
-  ]),
-  // 9
-  withBounds([
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1],
     [2, 1],
   ]),
 ];
